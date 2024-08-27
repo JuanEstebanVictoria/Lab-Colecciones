@@ -1,18 +1,15 @@
 package Punto7;
 
-public class Persona {
-    private String nombre;
+public class Persona implements  Comparable<Persona>{
+
     private int edad;
 
-    public Persona(String nombre, int edad) {
-        this.nombre = nombre;
+    public Persona(int edad) {
         this.edad = edad;
     }
-
-    public String getNombre() {
-        return nombre;
+    public int compareTo(Persona persona){
+        return Integer.compare(this.edad, persona.getEdad());
     }
-
     public int getEdad() {
         return edad;
     }

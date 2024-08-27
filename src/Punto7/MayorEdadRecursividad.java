@@ -1,31 +1,38 @@
 package Punto7;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MayorEdadRecursividad {
 
     public static void main(String[] args) {
 
-        ArrayList<Persona>personas= new ArrayList<>();
-        ArrayList<Persona>lista= new ArrayList<>();
-        int i =0;
-        Persona p1= new Persona("Juan",20);
-        Persona p2= new Persona("Pedro",21);
-        Persona p3= new Persona("Luis",91);
+        List<Persona>personas= new ArrayList<>();
+        Persona p1= new Persona(20);
+        Persona p2= new Persona(12);
+        Persona p3= new Persona(91);
+        Persona p4= new Persona(11);
 
-        personas.add(p1); personas.add(p2); personas.add(p3);
-        System.out.println(DeterminarMayoresEdad(personas, lista, i));
+        personas.add(p1); personas.add(p2); personas.add(p3); personas.add(p4);
 
-    }
+        List<Persona> mayores = DeterminarMayoresEdad(personas);
 
-    public  static ArrayList<Persona> DeterminarMayoresEdad(ArrayList<Persona> personas, ArrayList<Persona>lista, int i){
-
-        if(personas.get(i).getEdad()<18 && i<=personas.size()-1){
-            lista.add(personas.get(i));
-            return DeterminarMayoresEdad(personas,lista,i = i+1 );
-        }else {
-            return DeterminarMayoresEdad(personas, lista, i=1+1);
+        for(Persona p : mayores){
+            System.out.println("Mayores de edad: "+p.getEdad());
         }
+    }
+    public  static List<Persona> DeterminarMayoresEdad(List<Persona> personas){
 
+        if(personas.isEmpty()){
+            return  new ArrayList<>();
+        }
+        Persona primera = personas.get(0);
+        List<Persona> otras =  personas.subList(1, personas.size());
+        List<Persona> aux = DeterminarMayoresEdad(otras);
+
+        if(primera.compareTo(new Persona(18))>=0){
+            aux.add(0,primera);
+        }
+        return  aux;
     }
 }

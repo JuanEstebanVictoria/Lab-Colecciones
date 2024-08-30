@@ -1,13 +1,13 @@
 package Punto11;
 
 public class Producto {
-    private double producto;
+    double precio;
 
-    public Producto(double producto) {
-        this.producto = producto;
+    public Producto(double precio) {
+        this.precio = precio;
     }
 
     public double getProducto() {
-        return producto;
+        return precio;
     }
 }
